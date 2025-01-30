@@ -1,0 +1,19 @@
+The following CSS code snippet demonstrates an uncommon error related to the specificity of CSS selectors:
+
+```css
+div {
+  color: blue;
+}
+
+.my-class {
+  color: red; /* This rule will not override the div rule */
+}
+
+#my-id.my-class {  /* This rule will override both div and .my-class due to higher specificity */
+  color: green;
+}
+
+<div id="my-id" class="my-class"></div>
+```
+
+In this example, a `div` element with the id `my-id` and class `my-class` has three potential CSS rules that could affect its color.  The rule with `#my-id.my-class` has the highest specificity and wins, resulting in green text. The `.my-class` selector, while more specific than the `div` selector, does not override the rule with `#my-id.my-class` because the ID selector has the greatest weight in specificity calculations. This can lead to unexpected behavior if you're not aware of how specificity works.
